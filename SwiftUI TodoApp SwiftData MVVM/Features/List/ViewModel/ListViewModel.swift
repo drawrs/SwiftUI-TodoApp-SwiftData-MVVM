@@ -66,4 +66,11 @@ class ListViewModel {
         
         print("Added")
     }
+    func update(task: Task){
+        do {
+            try modelContext?.save()
+        } catch {
+            print("Failed update task...", error.localizedDescription)
+        }
+    }
 }

@@ -7,34 +7,31 @@
 
 import SwiftUI
 
-struct AddTaskView: View {
+struct EditTaskView: View {
     
     @Environment(\.dismiss) private var dismiss
     
     @Binding var viewModel: ListViewModel
     
-    @State var title: String = ""
-    @State private var date: Date = Date.now
-    @State var priority: Priority = .low
-    @State var status: Status = .todo
+    @State var task: Task
     
     var body: some View {
         Form {
             Section {
                 HStack {
-                    TextField("Task..", text: $title)
+                    TextField("Task..", text: $task.title)
                 }
                 
-                DatePicker("Date", selection: $date, displayedComponents: .date)
+                DatePicker("Date", selection: $task.date, displayedComponents: .date)
                 
-                Picker("Priority", selection: $priority) {
+                Picker("Priority", selection: $task.priority) {
                     ForEach(Priority.allCases, id: \.self) { priority in
                         Text(priority.rawValue).tag(priority)
                     }
                 }
                 .pickerStyle(.menu)
                 
-                Picker("Status", selection: $status) {
+                Picker("Status", selection: $task.status) {
                     ForEach(Status.allCases, id: \.self) { status in
                         Text(status.rawValue.capitalized).tag(status)
                     }
@@ -54,7 +51,7 @@ struct AddTaskView: View {
     }
     
     func save() {
-        viewModel.add(title: title, date: date, priority: priority, status: status)
+        viewModel.update(task: task)
         dismiss()
     }
     
@@ -62,6 +59,6 @@ struct AddTaskView: View {
 
 //#Preview {
 //    NavigationStack {
-//        AddTaskView()
+//        EditTaskView()
 //    }
 //}

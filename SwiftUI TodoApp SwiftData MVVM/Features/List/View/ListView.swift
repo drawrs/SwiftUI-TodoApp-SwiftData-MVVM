@@ -41,8 +41,9 @@ struct ListView: View {
                     }
                 }
                 .swipeActions(edge: .leading, allowsFullSwipe: false) {
-                    Button {
-                        
+                    
+                    NavigationLink {
+                        EditTaskView(viewModel: $viewModel, task: task)
                     } label: {
                         Text("Edit")
                     }
