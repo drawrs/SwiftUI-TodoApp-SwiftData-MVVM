@@ -79,7 +79,10 @@ struct ListView: View {
     }
     
     private func onDelete(at indexSet: IndexSet){
-        print("Delete action")
+        for index in indexSet {
+            let task = viewModel.tasks[index]
+            viewModel.delete(task: task)
+        }
     }
     
     private func onEdit() {

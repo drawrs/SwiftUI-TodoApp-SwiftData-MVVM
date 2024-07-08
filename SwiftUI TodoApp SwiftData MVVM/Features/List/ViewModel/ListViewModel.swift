@@ -55,7 +55,7 @@ class ListViewModel {
     }
     
     func delete(task: Task) {
-        
+        modelContext?.delete(task)
     }
     
     func add(title: String, date: Date, priority: Priority, status: Status) {
