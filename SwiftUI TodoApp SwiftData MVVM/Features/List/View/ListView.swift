@@ -11,7 +11,6 @@ struct ListView: View {
     @State var viewModel: ListViewModel = .init()
     @State var keyword: String = ""
     
-    
     var body: some View {
         List {
             ForEach(viewModel.tasks) { task in
@@ -20,7 +19,7 @@ struct ListView: View {
                         VStack(alignment: .leading) {
                             Text(task.title)
                                 .font(.headline)
-                            Text("Monday 15, June")
+                            Text(task.date.formattedString())
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
                         }

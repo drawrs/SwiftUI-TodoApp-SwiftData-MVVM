@@ -18,15 +18,20 @@ class ListViewModel {
     init(modelContext: ModelContext? = nil) {
         self.modelContext = modelContext
         
+        fetchTasks()
+        
         if tasks.isEmpty {
             loadSamples()
-        } else {
-            fetchTasks()
         }
     }
     
     func fetchTasks() {
-        
+        do {
+            let descriptor = FetchDescriptor<Task>(sortBy: [SortDescriptor(\.timestamps, order: .reverse)])
+            self.tasks = try modelContext?.fetch(descriptor) ?? []
+        } catch {
+            print("Fetch failed")
+        }
     }
     
     func searchTask(keyword: String) {
@@ -50,5 +55,7 @@ class ListViewModel {
         modelContext?.insert(task)
         
         fetchTasks()
+        
+        print("Added")
     }
 }
