@@ -11,6 +11,7 @@ struct ListView: View {
     @State var viewModel: ListViewModel = .init()
     @State var keyword: String = ""
     
+    
     var body: some View {
         List {
             ForEach(viewModel.tasks) { task in
@@ -66,7 +67,7 @@ struct ListView: View {
             
             ToolbarItem {
                 NavigationLink {
-                    AddTaskView()
+                    AddTaskView(viewModel: $viewModel)
                 } label: {
                     Image(systemName: "plus")
                 }

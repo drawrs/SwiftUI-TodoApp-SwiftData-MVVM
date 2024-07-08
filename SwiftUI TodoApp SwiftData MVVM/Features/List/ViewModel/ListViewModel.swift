@@ -44,4 +44,11 @@ class ListViewModel {
     func delete(task: Task) {
         
     }
+    
+    func add(title: String, date: Date, priority: Priority, status: Status) {
+        let task = Task(title: title, date: date, priority: priority, status: status)
+        modelContext?.insert(task)
+        
+        fetchTasks()
+    }
 }
