@@ -23,11 +23,10 @@ struct SwiftUI_TodoApp_SwiftData_MVVMApp: App {
         }
     }()
     
-    
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                ListView()
+                ListView(viewModel: .init(modelContext: .init(sharedModelContainer)))
             }
         }
         .modelContainer(sharedModelContainer)
