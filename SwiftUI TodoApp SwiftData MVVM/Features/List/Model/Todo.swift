@@ -8,15 +8,15 @@
 import Foundation
 import SwiftData
 
-enum Priority: Codable {
-    case low
-    case medium
-    case high
+enum Priority: String, Codable, CaseIterable {
+    case low = "⭐️"
+    case medium = "⭐️⭐️"
+    case high = "⭐️⭐️⭐️"
 }
 
-enum Status: Codable {
-    case done
-    case todo
+enum Status: String, Codable, CaseIterable {
+    case done = "DONE"
+    case todo = "TODO"
 }
 
 @Model

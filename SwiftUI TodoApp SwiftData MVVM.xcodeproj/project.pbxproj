@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36B6DE862C3BEFAD007A4A62 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B6DE852C3BEFAD007A4A62 /* AddTaskView.swift */; };
 		36D1C4792C3BA3DF0024F43F /* SwiftUI_TodoApp_SwiftData_MVVMApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D1C4782C3BA3DF0024F43F /* SwiftUI_TodoApp_SwiftData_MVVMApp.swift */; };
 		36D1C47B2C3BA3DF0024F43F /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D1C47A2C3BA3DF0024F43F /* ListView.swift */; };
 		36D1C47D2C3BA3E00024F43F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D1C47C2C3BA3E00024F43F /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36B6DE852C3BEFAD007A4A62 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		36D1C4752C3BA3DF0024F43F /* SwiftUI TodoApp SwiftData MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI TodoApp SwiftData MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36D1C4782C3BA3DF0024F43F /* SwiftUI_TodoApp_SwiftData_MVVMApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_TodoApp_SwiftData_MVVMApp.swift; sourceTree = "<group>"; };
 		36D1C47A2C3BA3DF0024F43F /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		36D1C48D2C3BA4540024F43F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				36B6DE852C3BEFAD007A4A62 /* AddTaskView.swift */,
 				36D1C47A2C3BA3DF0024F43F /* ListView.swift */,
 			);
 			path = View;
@@ -208,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36D1C47B2C3BA3DF0024F43F /* ListView.swift in Sources */,
+				36B6DE862C3BEFAD007A4A62 /* AddTaskView.swift in Sources */,
 				36D1C4792C3BA3DF0024F43F /* SwiftUI_TodoApp_SwiftData_MVVMApp.swift in Sources */,
 				36D1C48F2C3BA8D40024F43F /* ListViewModel.swift in Sources */,
 				36D1C4912C3BB4850024F43F /* Todo.swift in Sources */,

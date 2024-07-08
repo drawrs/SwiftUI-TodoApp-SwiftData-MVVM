@@ -13,7 +13,35 @@ class ListViewModel {
     
     var modelContext: ModelContext?
     
+    var tasks: [Task] = []
+    
     init(modelContext: ModelContext? = nil) {
         self.modelContext = modelContext
+        
+        if tasks.isEmpty {
+            loadSamples()
+        } else {
+            fetchTasks()
+        }
+    }
+    
+    func fetchTasks() {
+        
+    }
+    
+    func searchTask(keyword: String) {
+        if keyword.isEmpty {
+            fetchTasks()
+        } else {
+            
+        }
+    }
+    
+    func loadSamples() {
+        
+    }
+    
+    func delete(task: Task) {
+        
     }
 }

@@ -13,25 +13,27 @@ struct ListView: View {
     
     var body: some View {
         List {
-            ForEach(1...10, id: \.self) { item in
+            ForEach(viewModel.tasks) { task in
                 HStack {
                     HStack {
                         VStack(alignment: .leading) {
-                            Text("Shopping")
+                            Text(task.title)
                                 .font(.headline)
                             Text("Monday 15, June")
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
                         }
+                        
                         Spacer()
+                        
                         VStack {
-                            Text("⭐️⭐️⭐️")
-                            Text("DONE")
+                            Text(task.priority.rawValue)
+                            Text(task.status.rawValue)
                                 .font(.caption)
                                 .foregroundStyle(.white)
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 2)
-                                .background(.blue)
+                                .background(task.status == .done ? .blue : .red)
                                 .clipShape(RoundedRectangle(cornerRadius: 5.0))
                                 .padding(.vertical, 2)
                         }
@@ -49,17 +51,31 @@ struct ListView: View {
             }
             .onDelete(perform: onDelete)
         }
+        .overlay(alignment: .center, content: {
+            Group {
+                if viewModel.tasks.isEmpty {
+                    Text("Oops, looks like there's no data...")
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                }
+            }
+        })
         .navigationTitle("Todo List")
         .searchable(text: $keyword)
         .toolbar(content: {
+            
             ToolbarItem {
-                Button(action: {
-                    onEdit()
-                }, label: {
+                NavigationLink {
+                    AddTaskView()
+                } label: {
                     Image(systemName: "plus")
-                })
+                }
             }
+            
         })
+        .onChange(of: keyword) {
+            viewModel.searchTask(keyword: keyword)
+        }
     }
     
     private func onDelete(at indexSet: IndexSet){
