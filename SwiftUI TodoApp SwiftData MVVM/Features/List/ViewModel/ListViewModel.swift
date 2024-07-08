@@ -38,7 +38,15 @@ class ListViewModel {
         if keyword.isEmpty {
             fetchTasks()
         } else {
-            
+            do {
+                let descriptor = FetchDescriptor<Task>(predicate: #Predicate<Task> { task in
+                    task.title.contains(keyword)
+                }, sortBy: [SortDescriptor(\.date, order: .reverse)])
+                
+                self.tasks = try modelContext?.fetch(descriptor) ?? []
+            } catch {
+                print("Failed to search.. ", error.localizedDescription)
+            }
         }
     }
     

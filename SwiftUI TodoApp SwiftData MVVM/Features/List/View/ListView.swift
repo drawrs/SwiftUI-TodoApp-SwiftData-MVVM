@@ -26,7 +26,7 @@ struct ListView: View {
                         
                         Spacer()
                         
-                        VStack {
+                        VStack(alignment: .trailing) {
                             Text(task.priority.rawValue)
                             Text(task.status.rawValue)
                                 .font(.caption)
