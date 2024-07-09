@@ -19,10 +19,6 @@ class ListViewModel {
         self.modelContext = modelContext
         
         fetchTasks()
-        
-        if tasks.isEmpty {
-            loadSamples()
-        }
     }
     
     func fetchTasks() {
@@ -48,10 +44,6 @@ class ListViewModel {
                 print("Failed to search.. ", error.localizedDescription)
             }
         }
-    }
-    
-    func loadSamples() {
-        
     }
     
     func delete(task: Task) {
