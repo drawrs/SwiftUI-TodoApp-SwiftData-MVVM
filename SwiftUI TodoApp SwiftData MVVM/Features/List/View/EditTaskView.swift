@@ -11,9 +11,7 @@ struct EditTaskView: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    @Binding var viewModel: ListViewModel
-    
-    @State var task: Task
+    @State var task: Task = .init(title: "Test", priority: .medium)
     
     var body: some View {
         Form {
@@ -51,14 +49,8 @@ struct EditTaskView: View {
     }
     
     func save() {
-        viewModel.update(task: task)
+        
         dismiss()
     }
     
 }
-
-//#Preview {
-//    NavigationStack {
-//        EditTaskView()
-//    }
-//}

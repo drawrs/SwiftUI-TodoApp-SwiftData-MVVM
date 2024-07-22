@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct ListView: View {
-    @State var viewModel: ListViewModel = .init()
+    
     @State var keyword: String = ""
     
     var body: some View {
         List {
-            ForEach(viewModel.tasks) { task in
+            ForEach(1...10, id: \.self) { item in
                 HStack {
                     HStack {
                         VStack(alignment: .leading) {
-                            Text(task.title)
+                            Text("Task Title")
                                 .font(.headline)
-                            Text(task.date.formattedString())
+                            Text("Sunday 20, July")
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
                         }
@@ -27,13 +27,13 @@ struct ListView: View {
                         Spacer()
                         
                         VStack(alignment: .trailing) {
-                            Text(task.priority.rawValue)
-                            Text(task.status.rawValue)
+                            Text("")
+                            Text("DONE")
                                 .font(.caption)
                                 .foregroundStyle(.white)
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 2)
-                                .background(task.status == .done ? .blue : .red)
+                                .background(.blue)
                                 .clipShape(RoundedRectangle(cornerRadius: 5.0))
                                 .padding(.vertical, 2)
                         }
@@ -43,7 +43,7 @@ struct ListView: View {
                 .swipeActions(edge: .leading, allowsFullSwipe: false) {
                     
                     NavigationLink {
-                        EditTaskView(viewModel: $viewModel, task: task)
+                        EditTaskView()
                     } label: {
                         Text("Edit")
                     }
@@ -54,7 +54,7 @@ struct ListView: View {
         }
         .overlay(alignment: .center, content: {
             Group {
-                if viewModel.tasks.isEmpty {
+                if false {
                     Text("Oops, looks like there's no data...")
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
@@ -67,7 +67,7 @@ struct ListView: View {
             
             ToolbarItem {
                 NavigationLink {
-                    AddTaskView(viewModel: $viewModel)
+                    AddTaskView()
                 } label: {
                     Image(systemName: "plus")
                 }
@@ -75,14 +75,13 @@ struct ListView: View {
             
         })
         .onChange(of: keyword) {
-            viewModel.searchTask(keyword: keyword)
+            
         }
     }
     
     private func onDelete(at indexSet: IndexSet){
         for index in indexSet {
-            let task = viewModel.tasks[index]
-            viewModel.delete(task: task)
+            
         }
     }
     

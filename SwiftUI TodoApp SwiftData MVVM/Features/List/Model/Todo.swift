@@ -19,7 +19,6 @@ enum Status: String, Codable, CaseIterable {
     case todo = "TODO"
 }
 
-@Model
 final class Task {
     var title: String
     var date: Date

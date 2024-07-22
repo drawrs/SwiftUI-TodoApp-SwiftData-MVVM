@@ -11,8 +11,6 @@ struct AddTaskView: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    @Binding var viewModel: ListViewModel
-    
     @State var title: String = ""
     @State private var date: Date = Date.now
     @State var priority: Priority = .low
@@ -54,14 +52,7 @@ struct AddTaskView: View {
     }
     
     func save() {
-        viewModel.add(title: title, date: date, priority: priority, status: status)
         dismiss()
     }
     
 }
-
-//#Preview {
-//    NavigationStack {
-//        AddTaskView()
-//    }
-//}
