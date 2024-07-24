@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct EditTaskView: View {
     
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
     @State var task: Task = .init(title: "Test", priority: .medium)
@@ -49,7 +51,11 @@ struct EditTaskView: View {
     }
     
     func save() {
-        
+        do {
+            try modelContext.save()
+        } catch {
+            print("Failed update task...", error.localizedDescription)
+        }
         dismiss()
     }
     

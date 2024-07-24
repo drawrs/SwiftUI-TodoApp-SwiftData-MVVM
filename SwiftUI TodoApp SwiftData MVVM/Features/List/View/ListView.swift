@@ -6,20 +6,28 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ListView: View {
     
+    @Environment(\.modelContext) var modelContext
+    
+    @Query var tasks: [Task]
     @State var keyword: String = ""
+    
+    // This variables holds filtered task based on user keyword
+    @State var filteredTasks: [Task] = []
     
     var body: some View {
         List {
-            ForEach(1...10, id: \.self) { item in
+            // Add short if statement so it can choose between two values
+            ForEach(keyword.isEmpty ? tasks : filteredTasks, id: \.self) { task in
                 HStack {
                     HStack {
                         VStack(alignment: .leading) {
-                            Text("Task Title")
+                            Text(task.title)
                                 .font(.headline)
-                            Text("Sunday 20, July")
+                            Text(task.date.formattedString())
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
                         }
@@ -27,13 +35,13 @@ struct ListView: View {
                         Spacer()
                         
                         VStack(alignment: .trailing) {
-                            Text("")
-                            Text("DONE")
+                            Text(task.priority.rawValue)
+                            Text(task.status.rawValue)
                                 .font(.caption)
                                 .foregroundStyle(.white)
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 2)
-                                .background(.blue)
+                                .background(task.status == .done ? .blue : .red)
                                 .clipShape(RoundedRectangle(cornerRadius: 5.0))
                                 .padding(.vertical, 2)
                         }
@@ -41,9 +49,9 @@ struct ListView: View {
                     }
                 }
                 .swipeActions(edge: .leading, allowsFullSwipe: false) {
-                    
                     NavigationLink {
-                        EditTaskView()
+                        // move to edit screen with selected task data
+                        EditTaskView(task: task)
                     } label: {
                         Text("Edit")
                     }
@@ -64,7 +72,6 @@ struct ListView: View {
         .navigationTitle("Todo List")
         .searchable(text: $keyword)
         .toolbar(content: {
-            
             ToolbarItem {
                 NavigationLink {
                     AddTaskView()
@@ -75,16 +82,28 @@ struct ListView: View {
             
         })
         .onChange(of: keyword) {
-            
+            // Predicate operation
+            do {
+                let descriptor = FetchDescriptor<Task>(predicate: #Predicate<Task> { task in
+                    task.title.contains(keyword)
+                }, sortBy: [SortDescriptor(\.date, order: .reverse)])
+                
+                self.filteredTasks = try modelContext.fetch(descriptor)
+            } catch {
+                print("Failed to search.. ", error.localizedDescription)
+            }
         }
     }
     
+    // TODO: to be updated
     private func onDelete(at indexSet: IndexSet){
         for index in indexSet {
-            
+            let task = tasks[index]
+            modelContext.delete(task)
         }
     }
     
+    // TODO: to be updated
     private func onEdit() {
         print("Edit action")
     }

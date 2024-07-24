@@ -15,7 +15,7 @@
 		36D1C47B2C3BA3DF0024F43F /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D1C47A2C3BA3DF0024F43F /* ListView.swift */; };
 		36D1C47D2C3BA3E00024F43F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D1C47C2C3BA3E00024F43F /* Assets.xcassets */; };
 		36D1C4802C3BA3E00024F43F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36D1C47F2C3BA3E00024F43F /* Preview Assets.xcassets */; };
-		36D1C4912C3BB4850024F43F /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D1C4902C3BB4850024F43F /* Todo.swift */; };
+		36D1C4912C3BB4850024F43F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D1C4902C3BB4850024F43F /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +28,7 @@
 		36D1C47A2C3BA3DF0024F43F /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		36D1C47C2C3BA3E00024F43F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36D1C47F2C3BA3E00024F43F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		36D1C4902C3BB4850024F43F /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		36D1C4902C3BB4850024F43F /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +123,7 @@
 		36D1C48B2C3BA4480024F43F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				36D1C4902C3BB4850024F43F /* Todo.swift */,
+				36D1C4902C3BB4850024F43F /* Task.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,7 +213,7 @@
 				36B6DE862C3BEFAD007A4A62 /* AddTaskView.swift in Sources */,
 				36D1C4792C3BA3DF0024F43F /* SwiftUI_TodoApp_SwiftData_MVVMApp.swift in Sources */,
 				36B6DE8E2C3C2CA0007A4A62 /* EditTaskView.swift in Sources */,
-				36D1C4912C3BB4850024F43F /* Todo.swift in Sources */,
+				36D1C4912C3BB4850024F43F /* Task.swift in Sources */,
 				36B6DE8C2C3C2AE8007A4A62 /* Date+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

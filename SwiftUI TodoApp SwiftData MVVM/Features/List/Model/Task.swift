@@ -19,6 +19,8 @@ enum Status: String, Codable, CaseIterable {
     case todo = "TODO"
 }
 
+// Add SwiftData model macros
+@Model
 final class Task {
     var title: String
     var date: Date

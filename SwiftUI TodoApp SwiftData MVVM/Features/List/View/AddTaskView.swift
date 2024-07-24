@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddTaskView: View {
     
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
     @State var title: String = ""
@@ -52,6 +53,9 @@ struct AddTaskView: View {
     }
     
     func save() {
+        let newTask = Task(title: title, date: date, priority: priority)
+        modelContext.insert(newTask)
+        
         dismiss()
     }
     
